@@ -1,0 +1,21 @@
+@use '../utils/breakpoints' as bp;
+@use '../utils/functions' as f;
+@use '../utils/fonts' as font;
+
+.alata {
+    font-family: font.$alata;
+    font-weight: 400;
+}
+
+.josefin {
+    font-family: font.$josefin;
+    font-weight: 300;
+}
+
+/* REMOVE LATER */
+/* header,
+section.hero,
+section.info,
+section.creation {
+    display: none;
+} */

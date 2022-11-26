@@ -1,0 +1,97 @@
+@use '../utils/functions' as f;
+@use '../utils/breakpoints' as bp;
+
+footer {
+    position: relative;
+    color: white;
+    margin-top: auto;
+    width: min(100%, f.rem(1440));
+    background-color: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-block: f.rem(64);
+}
+
+/* Logo / Nav */
+.footer-nav {
+    text-align: center;
+    margin-bottom: f.rem(48);
+
+    .footer-logo {
+        margin-bottom: f.rem(32);
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: f.rem(24);
+
+        li {
+            a {
+                color: var(--white);
+            }
+        }
+    }
+}
+
+/* Socials / Copyright */
+.footer-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: f.rem(16);
+    flex-direction: column;
+
+    .socials {
+        display: flex;
+        gap: f.rem(16);
+
+        a {
+            color: var(--white);
+            font-size: f.rem(32);
+        }
+    }
+
+    .copyright {
+        p {
+            color: var(--d-gray);
+        }
+    }
+}
+
+
+
+
+.attribution { 
+    position: absolute;
+    bottom: f.rem(5);
+    font-size: f.rem(15); 
+    text-align: center; 
+    color: var(--x-d-gray);
+}
+.attribution a { 
+    color: var(--white); 
+
+    @include bp.breakpointMin(medium-screen) {
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin-inline: auto;
+            height: 2px;
+            width: 0;
+            background-color: var(--white);
+            transition: width .3s ease-in-out;
+        }
+
+        &:hover::after {
+            width: 100%;
+        }
+    }
+}

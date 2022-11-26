@@ -1,0 +1,75 @@
+@use '../utils/breakpoints' as bp;
+@use '../utils/functions' as f;
+
+header {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: min(100%, f.rem(1440));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: f.rem(32) 5%;
+}
+
+.hamburger-menu,
+.close-menu {
+    width: 25px;
+    cursor: pointer;
+
+    img {
+        width: 100%;
+    }
+}
+
+nav {
+    /* remove later */
+    /* display: none; */
+    
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--black);
+    padding: f.rem(32) 5%;
+    height: 100vh;
+    transform: translateX(-200%);
+    transition: .3s;
+
+    .nav-logo {
+        position: absolute;
+        top: 5%;
+        left: 5%
+    }
+
+    .close-menu {
+        position: absolute;
+        top: 5%;
+        right: 5%;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-transform: uppercase;
+        gap: f.rem(32);
+
+        li {
+            a {
+                font-size: f.rem(24);
+                color: var(--white);
+                letter-spacing: 1px;
+            }
+        }
+    }
+}
+
+.toggle-nav {
+    transform: translateX(0);
+    transition: .3s;
+}

@@ -1,0 +1,114 @@
+@use '../utils/breakpoints' as bp;
+@use '../utils/functions' as f;
+
+main {
+    width: min(100%, f.rem(1440));
+
+    /* remove later */
+    margin-bottom: 100px;
+}
+
+section.hero {
+    position: relative;
+
+    .section-hero-text {
+        width: min(90%, f.rem(400));
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border: 2px solid var(--white);
+        padding: f.rem(16);
+
+        h1 {
+            line-height: 1;
+            font-size: f.rem(42);
+            color: var(--white);
+            text-transform: uppercase;
+        }
+    }
+}
+
+section.info {
+    width: min(100%, f.rem(1440));
+    padding: f.rem(100) 5% 0;
+    text-align: center;
+
+    .section-info-img {
+        margin-bottom: f.rem(48);
+    }
+
+    article {
+
+        h2 {
+            text-transform: uppercase;
+            font-size: f.rem(32);
+            margin-bottom: f.rem(32);
+        }
+
+        p{
+            color: var(--x-d-gray);
+            font-size: f.rem(15);
+            padding-inline: f.rem(16);
+            line-height: 1.5;
+        }
+    }
+}
+
+section.creation {
+    position: relative;
+    padding: f.rem(100) 5%;
+    width: min(100%, f.rem(1440));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .section-creation-head {
+        text-transform: uppercase;
+        
+        h2 {
+            font-size: f.rem(32);
+            margin-bottom: f.rem(32);
+        }
+        
+        a {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            border: 1px solid var(--black);
+            color: var(--black);
+            width: f.rem(200);
+            padding-block: f.rem(12);
+            text-align: center;
+        }
+    }
+
+    .creation-selection-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: f.rem(32);
+
+        article {
+            position: relative;
+
+            h3 {
+                position: absolute;
+                z-index: 1;
+                bottom: 15%;
+                left: 5%;
+                text-transform: uppercase;
+                color: white;
+                width: f.rem(100);
+            }
+
+            &:nth-child(4) {
+                h3 {
+                    width: f.rem(50);
+                }
+            }
+        }
+    }
+}
