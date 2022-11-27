@@ -6,9 +6,14 @@ main {
 
     /* remove later */
     margin-bottom: 100px;
+    display: grid;
+    place-items: center;
 }
 
+/* HERO */
+/* Responsiveness at 780px(medium-screen) */
 section.hero {
+    width: 100%;
     position: relative;
 
     .section-hero-text {
@@ -19,6 +24,7 @@ section.hero {
         transform: translate(-50%, -50%);
         border: 2px solid var(--white);
         padding: f.rem(16);
+        transition: left .5s ease;
 
         h1 {
             line-height: 1;
@@ -27,18 +33,45 @@ section.hero {
             text-transform: uppercase;
         }
     }
+
+    /* 780px */
+    @include bp.breakpointMin(medium-screen) {
+        .section-hero-text {
+            left: 28%;
+            transition: left .5s ease;
+            transition: width .5s ease;
+        }
+    }
+
+    @include bp.breakpointMin(large-screen) {
+        .section-hero-text {
+            width: f.rem(530);
+            left: 23.5%;
+            transition: width .5s ease;
+
+            h1 {
+                font-size: f.rem(64);
+            }
+        }
+    }
 }
 
+/* INFORMATION SECTION */
+/* Responsiveness at 960px(large-screen) */
 section.info {
-    width: min(100%, f.rem(1440));
+    width: min(100%, f.rem(1240));
     padding: f.rem(100) 5% 0;
     text-align: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
 
     .section-info-img {
         margin-bottom: f.rem(48);
     }
 
     article {
+        width: min(100%, f.rem(575));
 
         h2 {
             text-transform: uppercase;
@@ -53,12 +86,38 @@ section.info {
             line-height: 1.5;
         }
     }
+
+    /* 960px */
+    @include bp.breakpointMin(large-screen) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        position: relative;
+        margin-bottom: f.rem(64);
+
+        article {
+            text-align: left;
+            position: absolute;
+            background-color: var(--white);
+            padding: f.rem(64);
+            top: 50%;
+            left: 40%;
+
+            h2 {
+                font-size: f.rem(44);
+            }
+
+            p {
+                padding: 0;
+            }
+        }
+    }
 }
 
+/* OUR CREATION SECTION */
 section.creation {
     position: relative;
     padding: f.rem(100) 5%;
-    width: min(100%, f.rem(1440));
+    width: min(100%, f.rem(1240));
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,7 +135,6 @@ section.creation {
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            text-transform: uppercase;
             letter-spacing: 5px;
             border: 1px solid var(--black);
             color: var(--black);
@@ -87,6 +145,7 @@ section.creation {
     }
 
     .creation-selection-grid {
+        width: 100%;
         display: grid;
         grid-template-columns: 1fr;
         gap: f.rem(32);
@@ -107,6 +166,82 @@ section.creation {
             &:nth-child(4) {
                 h3 {
                     width: f.rem(50);
+                }
+            }
+        }
+    }
+
+    /* 640px */
+    @include bp.breakpointMin(small-screen) {
+
+        .section-creation-head {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: f.rem(32);
+
+            h2 {
+                margin: 0;
+                font-size: f.rem(36);
+            }
+
+            a {
+                position: unset;
+                bottom: unset;
+                left: unset;
+                transform: translateX(0);
+
+                &:hover {
+                    background-color: var(--black);
+                    color: var(--white);
+                }
+            }
+        }
+
+        .creation-selection-grid {
+            grid-template-columns: repeat(2, 1fr);
+
+            article {
+                
+                h3 {
+                    left: 15%;
+                    bottom: 10%;
+                }
+            }
+        }
+    }
+
+    /* 780px */
+    @include bp.breakpointMin(medium-screen) {
+        .creation-selection-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    /* 960px */
+    @include bp.breakpointMin(large-screen) {
+        .creation-selection-grid {
+            grid-template-columns: repeat(4, 1fr);
+
+            article {
+                
+                h3 {
+                    width: 150px;
+                    font-size: f.rem(24);
+                }
+
+                &:first-child {
+
+                    h3 {
+                        width: 100px;
+                    }
+                }
+
+                &:nth-child(4) {
+                    h3 {
+                        width: f.rem(60);
+                    }
                 }
             }
         }

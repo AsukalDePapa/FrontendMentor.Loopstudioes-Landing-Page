@@ -5,13 +5,24 @@ footer {
     position: relative;
     color: white;
     margin-top: auto;
-    width: min(100%, f.rem(1440));
+    width: 100%;
     background-color: var(--black);
+}
+
+.footer-container {
+    margin-inline: auto;
+    width: min(100%, f.rem(1240));
+    padding-inline: 5%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-block: f.rem(64);
+
+    @include bp.breakpointMin(medium-screen) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
 
 /* Logo / Nav */
@@ -32,6 +43,14 @@ footer {
             a {
                 color: var(--white);
             }
+        }
+    }
+
+    @include bp.breakpointMin(medium-screen) {
+        margin: 0;
+
+        ul {
+            flex-direction: row;
         }
     }
 }
@@ -59,16 +78,18 @@ footer {
             color: var(--d-gray);
         }
     }
+
+    @include bp.breakpointMin(medium-screen) {
+        align-items: end;
+    }
 }
-
-
-
 
 .attribution { 
     position: absolute;
-    bottom: f.rem(5);
     font-size: f.rem(15); 
-    text-align: center; 
+    bottom: f.rem(5);
+    left: 50%;
+    transform: translateX(-50%);
     color: var(--x-d-gray);
 }
 .attribution a { 
