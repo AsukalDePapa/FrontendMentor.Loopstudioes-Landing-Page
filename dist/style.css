@@ -73,6 +73,7 @@ hr {
   isolation: isolate;
 }
 
+/* remove menu icon 780px(medium-screen) */
 header {
   position: absolute;
   z-index: 1;
@@ -84,6 +85,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 2rem 5%;
+  margin-inline: auto;
 }
 
 .hamburger-menu,
@@ -95,6 +97,12 @@ header {
 .close-menu img {
   width: 100%;
 }
+@media (min-width: 48.75rem) {
+  .hamburger-menu,
+.close-menu {
+    display: none;
+  }
+}
 
 nav {
   /* remove later */
@@ -102,6 +110,7 @@ nav {
   display: flex;
   align-items: center;
   position: absolute;
+  background-color: transparent;
   top: 0;
   left: 0;
   right: 0;
@@ -127,11 +136,42 @@ nav ul {
   justify-content: center;
   text-transform: uppercase;
   gap: 2rem;
+  font-family: "Josefin Sans", serif;
 }
 nav ul li a {
   font-size: 1.5rem;
   color: var(--white);
   letter-spacing: 1px;
+}
+@media (min-width: 48.75rem) {
+  nav {
+    position: unset;
+    left: unset;
+    top: unset;
+    right: unset;
+    transform: translateX(0);
+    background-color: unset;
+    height: unset;
+    padding: 0;
+  }
+  nav ul {
+    text-transform: capitalize;
+    font-family: "Alata", sans-serif;
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+  nav ul li a {
+    font-size: 1.125rem;
+    letter-spacing: 0;
+  }
+  nav .nav-logo {
+    display: none;
+  }
+}
+@media (min-width: 60em) {
+  nav ul {
+    gap: 1rem;
+  }
 }
 
 .toggle-nav {
@@ -143,10 +183,16 @@ main {
   width: min(100%, 90rem);
   /* remove later */
   margin-bottom: 100px;
+  display: grid;
+  place-items: center;
 }
 
+/* HERO */
+/* Responsiveness at 780px(medium-screen) */
 section.hero {
+  width: 100%;
   position: relative;
+  /* 780px */
 }
 section.hero .section-hero-text {
   width: min(90%, 25rem);
@@ -156,6 +202,7 @@ section.hero .section-hero-text {
   transform: translate(-50%, -50%);
   border: 2px solid var(--white);
   padding: 1rem;
+  transition: left 0.5s ease;
 }
 section.hero .section-hero-text h1 {
   line-height: 1;
@@ -163,14 +210,40 @@ section.hero .section-hero-text h1 {
   color: var(--white);
   text-transform: uppercase;
 }
+@media (min-width: 48.75rem) {
+  section.hero .section-hero-text {
+    left: 28%;
+    transition: left 0.5s ease;
+    transition: width 0.5s ease;
+  }
+}
+@media (min-width: 60em) {
+  section.hero .section-hero-text {
+    width: 33.125rem;
+    left: 23.5%;
+    transition: width 0.5s ease;
+  }
+  section.hero .section-hero-text h1 {
+    font-size: 4rem;
+  }
+}
 
+/* INFORMATION SECTION */
+/* Responsiveness at 960px(large-screen) */
 section.info {
-  width: min(100%, 90rem);
+  width: min(100%, 77.5rem);
   padding: 6.25rem 5% 0;
   text-align: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+  /* 960px */
 }
 section.info .section-info-img {
   margin-bottom: 3rem;
+}
+section.info article {
+  width: min(100%, 35.9375rem);
 }
 section.info article h2 {
   text-transform: uppercase;
@@ -183,14 +256,40 @@ section.info article p {
   padding-inline: 1rem;
   line-height: 1.5;
 }
+@media (min-width: 60em) {
+  section.info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+    margin-bottom: 4rem;
+  }
+  section.info article {
+    text-align: left;
+    position: absolute;
+    background-color: var(--white);
+    padding: 4rem;
+    top: 50%;
+    left: 40%;
+  }
+  section.info article h2 {
+    font-size: 2.75rem;
+  }
+  section.info article p {
+    padding: 0;
+  }
+}
 
+/* OUR CREATION SECTION */
 section.creation {
   position: relative;
   padding: 6.25rem 5%;
-  width: min(100%, 90rem);
+  width: min(100%, 77.5rem);
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* 640px */
+  /* 780px */
+  /* 960px */
 }
 section.creation .section-creation-head {
   text-transform: uppercase;
@@ -204,7 +303,6 @@ section.creation .section-creation-head a {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  text-transform: uppercase;
   letter-spacing: 5px;
   border: 1px solid var(--black);
   color: var(--black);
@@ -213,6 +311,7 @@ section.creation .section-creation-head a {
   text-align: center;
 }
 section.creation .creation-selection-grid {
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
@@ -232,6 +331,56 @@ section.creation .creation-selection-grid article h3 {
 section.creation .creation-selection-grid article:nth-child(4) h3 {
   width: 3.125rem;
 }
+@media (min-width: 40em) {
+  section.creation .section-creation-head {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+  section.creation .section-creation-head h2 {
+    margin: 0;
+    font-size: 2.25rem;
+  }
+  section.creation .section-creation-head a {
+    position: unset;
+    bottom: unset;
+    left: unset;
+    transform: translateX(0);
+  }
+  section.creation .section-creation-head a:hover {
+    background-color: var(--black);
+    color: var(--white);
+  }
+  section.creation .creation-selection-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  section.creation .creation-selection-grid article h3 {
+    left: 15%;
+    bottom: 10%;
+  }
+}
+@media (min-width: 48.75rem) {
+  section.creation .creation-selection-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 60em) {
+  section.creation .creation-selection-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  section.creation .creation-selection-grid article h3 {
+    width: 150px;
+    font-size: 1.5rem;
+  }
+  section.creation .creation-selection-grid article:first-child h3 {
+    width: 100px;
+  }
+  section.creation .creation-selection-grid article:nth-child(4) h3 {
+    width: 3.75rem;
+  }
+}
 
 .alata {
   font-family: "Alata", sans-serif;
@@ -243,24 +392,69 @@ section.creation .creation-selection-grid article:nth-child(4) h3 {
   font-weight: 300;
 }
 
-/* REMOVE LATER */
-/* header,
-section.hero,
-section.info,
-section.creation {
-    display: none;
-} */
+@media (min-width: 48.75rem) {
+  .hover-active li a {
+    position: relative;
+  }
+  .hover-active li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -10px;
+    margin-inline: auto;
+    width: 0;
+    height: 3px;
+    background-color: var(--white);
+    transition: width 0.3s ease-in-out;
+  }
+  .hover-active li a:hover::after {
+    width: 30%;
+  }
+}
+
+.socials-active a {
+  position: relative;
+}
+.socials-active a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  margin-inline: auto;
+  width: 0;
+  height: 3px;
+  background-color: var(--white);
+  transition: width 0.3s ease-in-out;
+}
+.socials-active a:hover::after {
+  width: 100%;
+}
+
 footer {
   position: relative;
   color: white;
   margin-top: auto;
-  width: min(100%, 90rem);
+  width: 100%;
   background-color: var(--black);
+}
+
+.footer-container {
+  margin-inline: auto;
+  width: min(100%, 77.5rem);
+  padding-inline: 5%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-block: 4rem;
+}
+@media (min-width: 48.75rem) {
+  .footer-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 /* Logo / Nav */
@@ -278,6 +472,14 @@ footer {
 }
 .footer-nav ul li a {
   color: var(--white);
+}
+@media (min-width: 48.75rem) {
+  .footer-nav {
+    margin: 0;
+  }
+  .footer-nav ul {
+    flex-direction: row;
+  }
 }
 
 /* Socials / Copyright */
@@ -299,12 +501,18 @@ footer {
 .footer-bottom .copyright p {
   color: var(--d-gray);
 }
+@media (min-width: 48.75rem) {
+  .footer-bottom {
+    align-items: end;
+  }
+}
 
 .attribution {
   position: absolute;
-  bottom: 0.3125rem;
   font-size: 0.9375rem;
-  text-align: center;
+  bottom: 0.3125rem;
+  left: 50%;
+  transform: translateX(-50%);
   color: var(--x-d-gray);
 }
 
